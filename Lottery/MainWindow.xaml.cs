@@ -56,7 +56,7 @@ namespace Lottery
         {
             buttonStop.IsEnabled = false;
             Random random = new Random();
-            finalValue = random.Next(100000);
+            finalValue = random.Next(15);
             numberGroupMain.TurnStop(finalValue);//使数字组停止
             timer.Start();
         }

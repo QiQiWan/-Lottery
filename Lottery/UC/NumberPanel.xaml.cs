@@ -21,7 +21,7 @@ namespace Lottery.UC
     public partial class NumberPanel : UserControl
     {
         //基础周期(秒)
-        private readonly int BASE_PERIOD = 10;
+        private readonly int BASE_PERIOD = 14;
 
         /// <summary>
         /// 滚动速度（个/秒）
@@ -48,7 +48,7 @@ namespace Lottery.UC
         DoubleAnimation animation2 = new DoubleAnimation();
 
         //字符列表
-        private string[] numberList = new string[] { "14", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13" };
+        private string[] numberList = new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15" };
 
         public NumberPanel()
         {
@@ -58,6 +58,12 @@ namespace Lottery.UC
 
         private void Init()
         {
+            foreach (string i in numberList)
+            {
+                NumberItem item = new NumberItem();
+                item.NumberValue = i;
+                stackPanelMain.Children.Add(item);
+            }
             foreach (string i in numberList)
             {
                 NumberItem item = new NumberItem();
@@ -75,7 +81,7 @@ namespace Lottery.UC
             }
 
             animation1.From = -60;
-            animation1.To = -120 * 10 - 60;
+            animation1.To = -120 * numberList.Length*2 - 60;
             animation1.Duration = new Duration(TimeSpan.FromSeconds(BASE_PERIOD));
             animation1.SpeedRatio = Speed;
             animation1.RepeatBehavior = RepeatBehavior.Forever;
@@ -95,17 +101,30 @@ namespace Lottery.UC
                 return;
             }
             double fromTop = (double)stackPanelMain.GetValue(Canvas.TopProperty);
-            double toTop = -120 * (((number + 22) % 10) + 18) - 60;
-
-            if (fromTop - toTop > 120 * 10)
+            int numIndex = 0;
+            for (int i = 0; i < this.numberList.Length; i++)
             {
-                fromTop -= 120 * 10;
+                if (number.ToString() == this.numberList[i])
+                {
+                    numIndex = i;
+                }
+            }
+
+            double toTop = -120 * (numberList.Length + numIndex - 1) - 60; //一个数字高120，宽120
+            double interval = fromTop - toTop;
+            if (interval < 0)
+            {
+                toTop += -120 * numberList.Length;
+            }
+            if (fromTop - toTop > 120 * numberList.Length)
+            {
+                fromTop -= 120 * numberList.Length;
             }
 
             animation2.From = fromTop;
             animation2.To = toTop;
             double numberCount = (fromTop - toTop) / 120;
-            double duration = BASE_PERIOD * numberCount / 10;
+            double duration = BASE_PERIOD * numberCount / (numberList.Length*2);
             animation2.Duration = new Duration(TimeSpan.FromSeconds(duration));
             animation2.SpeedRatio = 4;
             animation2.DecelerationRatio = 1;
