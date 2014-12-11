@@ -21,7 +21,7 @@ namespace Lottery.UC
     public partial class NumberPanel : UserControl
     {
         //基础周期(秒)
-        private readonly int BASE_PERIOD = 14;
+        private readonly int BASE_PERIOD = 15;
 
         /// <summary>
         /// 滚动速度（个/秒）
@@ -70,6 +70,12 @@ namespace Lottery.UC
                 item.NumberValue = i;
                 stackPanelMain.Children.Add(item);
             }
+            foreach (string i in numberList)
+            {
+                NumberItem item = new NumberItem();
+                item.NumberValue = i;
+                stackPanelMain.Children.Add(item);
+            }
         }
 
         //开始转动
@@ -81,7 +87,7 @@ namespace Lottery.UC
             }
 
             animation1.From = -60;
-            animation1.To = -120 * numberList.Length*2 - 60;
+            animation1.To = -120 * numberList.Length - 60;
             animation1.Duration = new Duration(TimeSpan.FromSeconds(BASE_PERIOD));
             animation1.SpeedRatio = Speed;
             animation1.RepeatBehavior = RepeatBehavior.Forever;
@@ -124,7 +130,7 @@ namespace Lottery.UC
             animation2.From = fromTop;
             animation2.To = toTop;
             double numberCount = (fromTop - toTop) / 120;
-            double duration = BASE_PERIOD * numberCount / (numberList.Length*2);
+            double duration = BASE_PERIOD * numberCount / (numberList.Length);
             animation2.Duration = new Duration(TimeSpan.FromSeconds(duration));
             animation2.SpeedRatio = 4;
             animation2.DecelerationRatio = 1;
