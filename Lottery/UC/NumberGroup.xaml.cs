@@ -24,7 +24,7 @@ namespace Lottery.UC
         /// </summary>
         public int FinalValue { get; set; }
 
-        private List<NumberPanel> listNumber = new List<NumberPanel>();
+        public List<NumberPanel> listNumber = new List<NumberPanel>();
 
         public NumberGroup()
         {
@@ -51,6 +51,7 @@ namespace Lottery.UC
         {
             foreach (var item in listNumber)
             {
+                item.Init();
                 item.TurnStart();
             }
         }

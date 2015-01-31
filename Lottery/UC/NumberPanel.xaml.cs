@@ -21,7 +21,7 @@ namespace Lottery.UC
     public partial class NumberPanel : UserControl
     {
         //基础周期(秒)
-        private readonly int BASE_PERIOD = 15;
+        private readonly int BASE_PERIOD = 15/2; //越小转的越快。
 
         /// <summary>
         /// 滚动速度（个/秒）
@@ -53,11 +53,12 @@ namespace Lottery.UC
         public NumberPanel()
         {
             InitializeComponent();
-            Init();
+            //Init();
         }
 
-        private void Init()
+        public void Init()
         {
+            stackPanelMain.Children.Clear(); //清楚原来的子元素
             foreach (string i in numberList)
             {
                 NumberItem item = new NumberItem();
@@ -141,6 +142,16 @@ namespace Lottery.UC
             storyboard1.Stop(this);
 
             storyboard2.Begin(this, true);
+
+            #region 把选中的数字以*号代替
+            for (int j = 0; j < this.numberList.Length; j++)
+            {
+                if (this.numberList[j] == number.ToString())
+                {
+                    this.numberList[j] = "*";
+                }
+            }
+            #endregion
         }
 
 
