@@ -163,6 +163,7 @@ namespace Lottery
                 {
                     this.SelectedNumList.Add(finalValue);
                     flag = false;
+
                     #region 把结果写入Txt.文件
                     string startpath = System.IO.Directory.GetCurrentDirectory(); //获取exe所在目录
                     StreamWriter sw = File.AppendText(startpath+"\\抽奖结果.txt");
@@ -170,6 +171,7 @@ namespace Lottery
                     sw.WriteLine(w);
                     sw.Close();
                     #endregion
+
                     break;
                 }
                 else
