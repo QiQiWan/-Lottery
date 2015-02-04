@@ -45,19 +45,98 @@ namespace Lottery
             if (numberGroupMain.IsStoped())
             {
                 //textBoxFinalPrice.Text = "￥" + finalValue.ToString("F2");//显示最终金额
-                string str = "";
-                foreach (var item in this.SelectedNumList)
+                #region 按照一、二、三、四等奖显示
+                switch (this.SelectedNumList.Count)
                 {
-                    str += item.ToString() + '，';
+                    case 1: //一等奖1个
+                        this.textBoxFirstPrice.Text = this.SelectedNumList[0].ToString();
+                        break;
+                    case 2: //二等奖2个中的第1个
+                        this.textBoxSecondPrice.Text = this.SelectedNumList[1].ToString();
+                        break;
+                    case 3: //二等奖2个中的第2个
+                        this.textBoxSecondPrice.Text = this.SelectedNumList[1].ToString() + "，" + this.SelectedNumList[2].ToString();
+                        break;
+                    case 4: //三等奖3个中的第1个
+                        this.textBoxThirdPrice.Text = this.SelectedNumList[3].ToString();
+                        break;
+                    case 5: //三等奖3个中的第2个
+                        this.textBoxThirdPrice.Text = this.SelectedNumList[3].ToString() + "，" + this.SelectedNumList[4].ToString();
+                        break;
+                    case 6: //三等奖3个中的第3个
+                        this.textBoxThirdPrice.Text = this.SelectedNumList[3].ToString() + "，" + this.SelectedNumList[4].ToString() + "，" + this.SelectedNumList[5].ToString();
+                        break;
+                    case 7: //四等奖4个中的第1个
+                        this.textBoxFourthPrice.Text = this.SelectedNumList[6].ToString();
+                        break;
+                    case 8: //四等奖4个中的第2个
+                        this.textBoxFourthPrice.Text = this.SelectedNumList[6].ToString() + "，" + this.SelectedNumList[7].ToString();
+                        break;
+                    case 9: //四等奖4个中的第3个
+                        this.textBoxFourthPrice.Text = this.SelectedNumList[6].ToString() + "，" + this.SelectedNumList[7].ToString() + "，" + this.SelectedNumList[8].ToString();
+                        break;
+                    case 10: //四等奖4个中的第4个
+                        this.textBoxFourthPrice.Text = this.SelectedNumList[6].ToString() + "，" + this.SelectedNumList[7].ToString() + "，" + this.SelectedNumList[8].ToString() + "，" + this.SelectedNumList[9].ToString();
+                        break;
                 }
-                textBoxFinalPrice.Text = str;
+                #endregion
+                //string str = "";
+                //foreach (var item in this.SelectedNumList)
+                //{
+                //    str += item.ToString() + '，';
+                //}
+                //textBoxFinalPrice.Text = str;
                 timer.Stop();
-                buttonStart.IsEnabled = true;
+
+                if (this.SelectedNumList.Count >= 10)//抽完了，
+                {
+                    MessageBox.Show("( ⊙ o ⊙ )！？没抽到的找张旻报仇吧！");
+                    buttonStart.IsEnabled = false;
+                    buttonStop.IsEnabled = false;
+                    //numberGroupMain.TurnStop(1); //使滚轮停止到1处。
+                }
+                else
+                {
+                    buttonStart.IsEnabled = true;
+                }
             }
         }
 
         //开始按钮点击
         private void buttonStart_Click(object sender, RoutedEventArgs e)
+        {
+            e.Handled = true;
+            Start();
+        }
+
+        //停止按钮点击
+        private void buttonStop_Click(object sender, RoutedEventArgs e)
+        {
+            e.Handled = true;
+            Stop();
+        }
+
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Space) //绑定空格键盘命令
+            {
+                if (buttonStart.IsEnabled == true && buttonStop.IsEnabled == false)
+                {
+                    Start();
+                    e.Handled = true;
+                    return;
+                }
+
+                if (buttonStart.IsEnabled == false && buttonStop.IsEnabled == true)
+                {
+                    Stop();
+                    e.Handled = true;
+                    return;
+                }
+            }
+        }
+
+        private void Start()
         {
             buttonStart.IsEnabled = false;
             buttonStop.IsEnabled = true;
@@ -66,13 +145,11 @@ namespace Lottery
             timer.Stop();
         }
 
-        //停止按钮点击
-        private void buttonStop_Click(object sender, RoutedEventArgs e)
+        private void Stop()
         {
             if (this.SelectedNumList.Count >= Count)
             {
                 MessageBox.Show("还抽啥？直接发奖呗！");
-                e.Handled = true;
                 return;
             }
 
@@ -80,7 +157,7 @@ namespace Lottery
             bool flag = true;
             while (flag)
             {
-                finalValue = random.Next(1,16);
+                finalValue = random.Next(1, 16);
                 if (this.SelectedNumList.Contains(finalValue) == false) //不在已抽中序列里面
                 {
                     this.SelectedNumList.Add(finalValue);
