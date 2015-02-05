@@ -53,31 +53,28 @@ namespace Lottery
                         this.textBoxFirstPrice.Text = this.SelectedNumList[0].ToString();
                         break;
                     case 2: //二等奖2个中的第1个
-                        this.textBoxSecondPrice.Text = this.SelectedNumList[1].ToString();
+                        this.textBoxSecondPrice1.Text = this.SelectedNumList[1].ToString();
                         break;
                     case 3: //二等奖2个中的第2个
-                        this.textBoxSecondPrice.Text = this.SelectedNumList[1].ToString() + "，" + this.SelectedNumList[2].ToString();
+                        this.textBoxSecondPrice2.Text = this.SelectedNumList[2].ToString();
                         break;
                     case 4: //三等奖3个中的第1个
-                        this.textBoxThirdPrice.Text = this.SelectedNumList[3].ToString();
+                        this.textBoxThirdPrice1.Text = this.SelectedNumList[3].ToString();
                         break;
                     case 5: //三等奖3个中的第2个
-                        this.textBoxThirdPrice.Text = this.SelectedNumList[3].ToString() + "，" + this.SelectedNumList[4].ToString();
+                        this.textBoxThirdPrice2.Text = this.SelectedNumList[4].ToString();
                         break;
                     case 6: //三等奖3个中的第3个
-                        this.textBoxThirdPrice.Text = this.SelectedNumList[3].ToString() + "，" + this.SelectedNumList[4].ToString() + "，" + this.SelectedNumList[5].ToString();
+                        this.textBoxThirdPrice3.Text = this.SelectedNumList[5].ToString();
                         break;
                     case 7: //四等奖4个中的第1个
-                        this.textBoxFourthPrice.Text = this.SelectedNumList[6].ToString();
+                        this.textBoxFourthPrice1.Text = this.SelectedNumList[6].ToString();
                         break;
                     case 8: //四等奖4个中的第2个
-                        this.textBoxFourthPrice.Text = this.SelectedNumList[6].ToString() + "，" + this.SelectedNumList[7].ToString();
+                        this.textBoxFourthPrice2.Text = this.SelectedNumList[7].ToString();
                         break;
                     case 9: //四等奖4个中的第3个
-                        this.textBoxFourthPrice.Text = this.SelectedNumList[6].ToString() + "，" + this.SelectedNumList[7].ToString() + "，" + this.SelectedNumList[8].ToString();
-                        break;
-                    case 10: //四等奖4个中的第4个
-                        this.textBoxFourthPrice.Text = this.SelectedNumList[6].ToString() + "，" + this.SelectedNumList[7].ToString() + "，" + this.SelectedNumList[8].ToString() + "，" + this.SelectedNumList[9].ToString();
+                        this.textBoxFourthPrice3.Text = this.SelectedNumList[8].ToString();
                         break;
                 }
                 #endregion
@@ -89,9 +86,17 @@ namespace Lottery
                 //textBoxFinalPrice.Text = str;
                 timer.Stop();
 
-                if (this.SelectedNumList.Count >= 10)//抽完了，
+                #region 把结果写入Txt.文件
+                string startpath = System.IO.Directory.GetCurrentDirectory(); //获取exe所在目录
+                StreamWriter sw = File.AppendText(startpath + "\\抽奖结果.txt");
+                string w = DateTime.Now.ToString() + ":             " + finalValue;
+                sw.WriteLine(w);
+                sw.Close();
+                #endregion
+
+                if (this.SelectedNumList.Count >= 9 )//抽完了，
                 {
-                    MessageBox.Show("( ⊙ o ⊙ )！？没抽到的找张旻报仇吧！");
+                    MessageBox.Show("( ⊙ o ⊙ )！？没中的叫他们请客吧！");
                     buttonStart.IsEnabled = false;
                     buttonStop.IsEnabled = false;
                     //numberGroupMain.TurnStop(1); //使滚轮停止到1处。
@@ -163,15 +168,6 @@ namespace Lottery
                 {
                     this.SelectedNumList.Add(finalValue);
                     flag = false;
-
-                    #region 把结果写入Txt.文件
-                    string startpath = System.IO.Directory.GetCurrentDirectory(); //获取exe所在目录
-                    StreamWriter sw = File.AppendText(startpath+"\\抽奖结果.txt");
-                    string w = DateTime.Now.ToString() + ":             " + finalValue;
-                    sw.WriteLine(w);
-                    sw.Close();
-                    #endregion
-
                     break;
                 }
                 else

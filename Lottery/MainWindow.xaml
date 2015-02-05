@@ -42,7 +42,26 @@
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,5,0,0">
                 <Label Content="二等奖：" Height="60" HorizontalAlignment="Left" Margin="0,0,0,0" x:Name="labelSecondPrice" VerticalAlignment="Center" FontSize="36" Foreground="White"/>
 
-                <TextBox Grid.Row="1" Height="60" HorizontalAlignment="Left" Margin="10,0,0,0" x:Name="textBoxSecondPrice" VerticalAlignment="Center" MinWidth="60" IsReadOnly="True" FontSize="36" TextAlignment="Center" Foreground="Red" BorderThickness="2" >
+                <TextBox Grid.Row="1" Height="60" HorizontalAlignment="Left" Margin="10,0,0,0" x:Name="textBoxSecondPrice1" VerticalAlignment="Center" MinWidth="60" IsReadOnly="True" FontSize="36" TextAlignment="Center" Foreground="Red" BorderThickness="2" >
+                    <TextBox.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FF979797"/>
+                            <GradientStop Color="#FFD0D0D0" Offset="1"/>
+                            <GradientStop Color="#FFEBEBEB" Offset="0.263"/>
+                            <GradientStop Color="#FFEDEDED" Offset="0.841"/>
+                            <GradientStop Color="White" Offset="0.517"/>
+                        </LinearGradientBrush>
+                    </TextBox.Background>
+                    <TextBox.BorderBrush>
+                        <LinearGradientBrush EndPoint="0,1" MappingMode="RelativeToBoundingBox" StartPoint="0,0">
+                            <GradientStop Color="#FFED9426"/>
+                            <GradientStop Color="#FFC46310" Offset="1"/>
+                            <GradientStop Color="#FFD98933" Offset="0.612"/>
+                            <GradientStop Color="#FEAF5800" Offset="0.655"/>
+                        </LinearGradientBrush>
+                    </TextBox.BorderBrush>
+                </TextBox>
+                <TextBox Grid.Row="1" Height="60" HorizontalAlignment="Left" Margin="10,0,0,0" x:Name="textBoxSecondPrice2" VerticalAlignment="Center" MinWidth="60" IsReadOnly="True" FontSize="36" TextAlignment="Center" Foreground="Red" BorderThickness="2" >
                     <TextBox.Background>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                             <GradientStop Color="#FF979797"/>
@@ -65,7 +84,45 @@
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,5,0,0">
                 <Label Content="三等奖：" Height="60" HorizontalAlignment="Left" Margin="0,0,0,0" x:Name="labelThirdPrice" VerticalAlignment="Center" FontSize="36" Foreground="White"/>
 
-                <TextBox Grid.Row="1" Height="60" HorizontalAlignment="Left" Margin="10,0,0,0" x:Name="textBoxThirdPrice" VerticalAlignment="Center" MinWidth="60" IsReadOnly="True" FontSize="36" TextAlignment="Center" Foreground="Red" BorderThickness="2" >
+                <TextBox Grid.Row="1" Height="60" HorizontalAlignment="Left" Margin="10,0,0,0" x:Name="textBoxThirdPrice1" VerticalAlignment="Center" MinWidth="60" IsReadOnly="True" FontSize="36" TextAlignment="Center" Foreground="Red" BorderThickness="2" >
+                    <TextBox.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FF979797"/>
+                            <GradientStop Color="#FFD0D0D0" Offset="1"/>
+                            <GradientStop Color="#FFEBEBEB" Offset="0.263"/>
+                            <GradientStop Color="#FFEDEDED" Offset="0.841"/>
+                            <GradientStop Color="White" Offset="0.517"/>
+                        </LinearGradientBrush>
+                    </TextBox.Background>
+                    <TextBox.BorderBrush>
+                        <LinearGradientBrush EndPoint="0,1" MappingMode="RelativeToBoundingBox" StartPoint="0,0">
+                            <GradientStop Color="#FFED9426"/>
+                            <GradientStop Color="#FFC46310" Offset="1"/>
+                            <GradientStop Color="#FFD98933" Offset="0.612"/>
+                            <GradientStop Color="#FEAF5800" Offset="0.655"/>
+                        </LinearGradientBrush>
+                    </TextBox.BorderBrush>
+                </TextBox>
+                <TextBox Grid.Row="1" Height="60" HorizontalAlignment="Left" Margin="10,0,0,0" x:Name="textBoxThirdPrice2" VerticalAlignment="Center" MinWidth="60" IsReadOnly="True" FontSize="36" TextAlignment="Center" Foreground="Red" BorderThickness="2" >
+                    <TextBox.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FF979797"/>
+                            <GradientStop Color="#FFD0D0D0" Offset="1"/>
+                            <GradientStop Color="#FFEBEBEB" Offset="0.263"/>
+                            <GradientStop Color="#FFEDEDED" Offset="0.841"/>
+                            <GradientStop Color="White" Offset="0.517"/>
+                        </LinearGradientBrush>
+                    </TextBox.Background>
+                    <TextBox.BorderBrush>
+                        <LinearGradientBrush EndPoint="0,1" MappingMode="RelativeToBoundingBox" StartPoint="0,0">
+                            <GradientStop Color="#FFED9426"/>
+                            <GradientStop Color="#FFC46310" Offset="1"/>
+                            <GradientStop Color="#FFD98933" Offset="0.612"/>
+                            <GradientStop Color="#FEAF5800" Offset="0.655"/>
+                        </LinearGradientBrush>
+                    </TextBox.BorderBrush>
+                </TextBox>
+                <TextBox Grid.Row="1" Height="60" HorizontalAlignment="Left" Margin="10,0,0,0" x:Name="textBoxThirdPrice3" VerticalAlignment="Center" MinWidth="60" IsReadOnly="True" FontSize="36" TextAlignment="Center" Foreground="Red" BorderThickness="2" >
                     <TextBox.Background>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                             <GradientStop Color="#FF979797"/>
@@ -88,7 +145,45 @@
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,5,0,0">
                 <Label Content="四等奖：" Height="60" HorizontalAlignment="Left" Margin="0,0,0,0" x:Name="labelFourthPrice" VerticalAlignment="Center" FontSize="36" Foreground="White"/>
 
-                <TextBox Grid.Row="1" Height="60" HorizontalAlignment="Left" Margin="10,0,0,0" x:Name="textBoxFourthPrice" VerticalAlignment="Center" MinWidth="60" IsReadOnly="True" FontSize="36" TextAlignment="Center" Foreground="Red" BorderThickness="2" >
+                <TextBox Grid.Row="1" Height="60" HorizontalAlignment="Left" Margin="10,0,0,0" x:Name="textBoxFourthPrice1" VerticalAlignment="Center" MinWidth="60" IsReadOnly="True" FontSize="36" TextAlignment="Center" Foreground="Red" BorderThickness="2" >
+                    <TextBox.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FF979797"/>
+                            <GradientStop Color="#FFD0D0D0" Offset="1"/>
+                            <GradientStop Color="#FFEBEBEB" Offset="0.263"/>
+                            <GradientStop Color="#FFEDEDED" Offset="0.841"/>
+                            <GradientStop Color="White" Offset="0.517"/>
+                        </LinearGradientBrush>
+                    </TextBox.Background>
+                    <TextBox.BorderBrush>
+                        <LinearGradientBrush EndPoint="0,1" MappingMode="RelativeToBoundingBox" StartPoint="0,0">
+                            <GradientStop Color="#FFED9426"/>
+                            <GradientStop Color="#FFC46310" Offset="1"/>
+                            <GradientStop Color="#FFD98933" Offset="0.612"/>
+                            <GradientStop Color="#FEAF5800" Offset="0.655"/>
+                        </LinearGradientBrush>
+                    </TextBox.BorderBrush>
+                </TextBox>
+                <TextBox Grid.Row="1" Height="60" HorizontalAlignment="Left" Margin="10,0,0,0" x:Name="textBoxFourthPrice2" VerticalAlignment="Center" MinWidth="60" IsReadOnly="True" FontSize="36" TextAlignment="Center" Foreground="Red" BorderThickness="2" >
+                    <TextBox.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FF979797"/>
+                            <GradientStop Color="#FFD0D0D0" Offset="1"/>
+                            <GradientStop Color="#FFEBEBEB" Offset="0.263"/>
+                            <GradientStop Color="#FFEDEDED" Offset="0.841"/>
+                            <GradientStop Color="White" Offset="0.517"/>
+                        </LinearGradientBrush>
+                    </TextBox.Background>
+                    <TextBox.BorderBrush>
+                        <LinearGradientBrush EndPoint="0,1" MappingMode="RelativeToBoundingBox" StartPoint="0,0">
+                            <GradientStop Color="#FFED9426"/>
+                            <GradientStop Color="#FFC46310" Offset="1"/>
+                            <GradientStop Color="#FFD98933" Offset="0.612"/>
+                            <GradientStop Color="#FEAF5800" Offset="0.655"/>
+                        </LinearGradientBrush>
+                    </TextBox.BorderBrush>
+                </TextBox>
+                <TextBox Grid.Row="1" Height="60" HorizontalAlignment="Left" Margin="10,0,0,0" x:Name="textBoxFourthPrice3" VerticalAlignment="Center" MinWidth="60" IsReadOnly="True" FontSize="36" TextAlignment="Center" Foreground="Red" BorderThickness="2" >
                     <TextBox.Background>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                             <GradientStop Color="#FF979797"/>
