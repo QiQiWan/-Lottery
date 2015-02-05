@@ -10,9 +10,9 @@ using System.Windows;
 [assembly: AssemblyTitle("Lottery")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("微软中国")]
-[assembly: AssemblyProduct("Lottery")]
-[assembly: AssemblyCopyright("Copyright © 微软中国 2014")]
+[assembly: AssemblyCompany("上海杰瑞兆新信息科技有限公司")]
+[assembly: AssemblyProduct("2015年会专用抽奖软件")]
+[assembly: AssemblyCopyright("Copyright © Shjari 2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
