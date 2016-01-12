@@ -21,12 +21,12 @@ namespace Lottery.UC
     public partial class NumberPanel : UserControl
     {
         //基础周期(秒)
-        private readonly int BASE_PERIOD = 15/2; //越小转的越快。
+        private readonly int BASE_PERIOD = 5; //越小转的越快。
 
         /// <summary>
         /// 滚动速度（个/秒）
         /// </summary>
-        private double _Speed = 1;
+        private double _speed = 1;
         /// <summary>
         /// 转动速度
         /// </summary>
@@ -34,11 +34,11 @@ namespace Lottery.UC
         {
             get
             {
-                return _Speed;
+                return _speed;
             }
             set
             {
-                _Speed = value;
+                _speed = value;
             }
         }
 
@@ -48,7 +48,7 @@ namespace Lottery.UC
         DoubleAnimation animation2 = new DoubleAnimation();
 
         //字符列表
-        private string[] numberList = new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15" };
+        public readonly string[] NumberList = new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15","16","17" };
 
         public NumberPanel()
         {
@@ -59,19 +59,19 @@ namespace Lottery.UC
         public void Init()
         {
             stackPanelMain.Children.Clear(); //清楚原来的子元素
-            foreach (string i in numberList)
+            foreach (string i in NumberList)
             {
                 NumberItem item = new NumberItem();
                 item.NumberValue = i;
                 stackPanelMain.Children.Add(item);
             }
-            foreach (string i in numberList)
+            foreach (string i in NumberList)
             {
                 NumberItem item = new NumberItem();
                 item.NumberValue = i;
                 stackPanelMain.Children.Add(item);
             }
-            foreach (string i in numberList)
+            foreach (string i in NumberList)
             {
                 NumberItem item = new NumberItem();
                 item.NumberValue = i;
@@ -88,7 +88,7 @@ namespace Lottery.UC
             }
 
             animation1.From = -60;
-            animation1.To = -120 * numberList.Length - 60;
+            animation1.To = -120 * NumberList.Length - 60;
             animation1.Duration = new Duration(TimeSpan.FromSeconds(BASE_PERIOD));
             animation1.SpeedRatio = Speed;
             animation1.RepeatBehavior = RepeatBehavior.Forever;
@@ -109,31 +109,31 @@ namespace Lottery.UC
             }
             double fromTop = (double)stackPanelMain.GetValue(Canvas.TopProperty);
             int numIndex = 0;
-            for (int i = 0; i < this.numberList.Length; i++)
+            for (int i = 0; i < this.NumberList.Length; i++)
             {
-                if (number.ToString() == this.numberList[i])
+                if (number.ToString() == this.NumberList[i])
                 {
                     numIndex = i;
                 }
             }
 
-            double toTop = -120 * (numberList.Length + numIndex - 1) - 60; //一个数字高120，宽120
+            double toTop = -120 * (NumberList.Length + numIndex - 1) - 60; //一个数字高120，宽120
             double interval = fromTop - toTop;
             if (interval < 0)
             {
-                toTop += -120 * numberList.Length;
+                toTop += -120 * NumberList.Length;
             }
-            if (fromTop - toTop > 120 * numberList.Length)
+            if (fromTop - toTop > 120 * NumberList.Length)
             {
-                fromTop -= 120 * numberList.Length;
+                fromTop -= 120 * NumberList.Length;
             }
 
             animation2.From = fromTop;
             animation2.To = toTop;
             double numberCount = (fromTop - toTop) / 120;
-            double duration = BASE_PERIOD * numberCount / (numberList.Length);
+            double duration = BASE_PERIOD * numberCount / (NumberList.Length);
             animation2.Duration = new Duration(TimeSpan.FromSeconds(duration));
-            animation2.SpeedRatio = 4;
+            animation2.SpeedRatio = 400;
             animation2.DecelerationRatio = 1;
             Storyboard.SetTargetName(animation2, stackPanelMain.Name);
             Storyboard.SetTargetProperty(animation2, new PropertyPath(Canvas.TopProperty));
@@ -144,11 +144,11 @@ namespace Lottery.UC
             storyboard2.Begin(this, true);
 
             #region 把选中的数字以*号代替
-            for (int j = 0; j < this.numberList.Length; j++)
+            for (int j = 0; j < this.NumberList.Length; j++)
             {
-                if (this.numberList[j] == number.ToString())
+                if (this.NumberList[j] == number.ToString())
                 {
-                    this.numberList[j] = "*";
+                    this.NumberList[j] = "*";
                 }
             }
             #endregion

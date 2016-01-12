@@ -44,13 +44,13 @@
                 <TextBox x:Name="textBoxThirdPrice2"></TextBox>
                 <TextBox x:Name="textBoxThirdPrice3"></TextBox>
             </StackPanel>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,5,0,0">
+            <!--<StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,5,0,0">
                 <Label Content="四等奖：" x:Name="labelFourthPrice"/>
 
                 <TextBox x:Name="textBoxFourthPrice1"></TextBox>
                 <TextBox x:Name="textBoxFourthPrice2"></TextBox>
                 <TextBox x:Name="textBoxFourthPrice3"></TextBox>
-            </StackPanel>
+            </StackPanel>-->
         </StackPanel>
         <my:NumberGroup Grid.Row="1"  HorizontalAlignment="Center" x:Name="numberGroupMain"  HorizontalContentAlignment="Center" VerticalAlignment="Center"/>
 
