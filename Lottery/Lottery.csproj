@@ -56,6 +56,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Common.cs" />
     <Compile Include="UC\NumberGroup.xaml.cs">
       <DependentUpon>NumberGroup.xaml</DependentUpon>
     </Compile>
@@ -129,6 +130,21 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="ico.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="config.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="NameList.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\background.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\intuition.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\copyright.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

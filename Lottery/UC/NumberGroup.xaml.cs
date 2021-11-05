@@ -56,12 +56,12 @@ namespace Lottery.UC
             }
         }
 
-        public void TurnStop(int number)
+        public void TurnStop(string name)
         {
             for (int i = 0; i < 1; i++)
             {
                 //int value = (int)(number / Math.Pow(10, 5 - i));
-                int value = number;
+                string value = name;
                 var item = listNumber[i];
                 item.TurnStopAt(value);
             }

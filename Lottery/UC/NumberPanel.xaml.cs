@@ -48,16 +48,19 @@ namespace Lottery.UC
         DoubleAnimation animation2 = new DoubleAnimation();
 
         //字符列表
-        public readonly string[] NumberList = new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15","16","17" };
+        public string[] NumberList;
 
         public NumberPanel()
         {
             InitializeComponent();
+            Common.Init();
+            NumberList = Common.NameList;
             //Init();
         }
 
         public void Init()
         {
+            NumberList = Common.AvailableName;
             stackPanelMain.Children.Clear(); //清楚原来的子元素
             foreach (string i in NumberList)
             {
@@ -101,37 +104,41 @@ namespace Lottery.UC
         }
 
         //使转动停止在某个数字上
-        public void TurnStopAt(int number)
+        public void TurnStopAt(string name)
         {
+            if (name == "我是空白!")
+            {
+                return;
+            }
             if (Speed <= 0)
             {
                 return;
             }
             double fromTop = (double)stackPanelMain.GetValue(Canvas.TopProperty);
             int numIndex = 0;
-            for (int i = 0; i < this.NumberList.Length; i++)
+            for (int i = 0; i < NumberList.Length; i++)
             {
-                if (number.ToString() == this.NumberList[i])
+                if (name == Common.AvailableName[i])
                 {
                     numIndex = i;
                 }
             }
 
-            double toTop = -120 * (NumberList.Length + numIndex - 1) - 60; //一个数字高120，宽120
+            double toTop = -120 * (numIndex - 1 ) - 60; //一个数字高120，宽120
             double interval = fromTop - toTop;
             if (interval < 0)
             {
-                toTop += -120 * NumberList.Length;
+                toTop += -120 * Common.AvailableName.Length;
             }
-            if (fromTop - toTop > 120 * NumberList.Length)
+            if (fromTop - toTop > 120 * Common.AvailableName.Length)
             {
-                fromTop -= 120 * NumberList.Length;
+                fromTop -= 120 * Common.AvailableName.Length;
             }
 
             animation2.From = fromTop;
             animation2.To = toTop;
             double numberCount = (fromTop - toTop) / 120;
-            double duration = BASE_PERIOD * numberCount / (NumberList.Length);
+            double duration = BASE_PERIOD * numberCount / (Common.AvailableName.Length);
             animation2.Duration = new Duration(TimeSpan.FromSeconds(duration));
             animation2.SpeedRatio = 400;
             animation2.DecelerationRatio = 1;
@@ -144,16 +151,19 @@ namespace Lottery.UC
             storyboard2.Begin(this, true);
 
             #region 把选中的数字以*号代替
-            for (int j = 0; j < this.NumberList.Length; j++)
+            for (int j = 0; j < Common.AvailableName.Length; j++)
             {
-                if (this.NumberList[j] == number.ToString())
+                if (Common.AvailableName[j] == name)
                 {
-                    this.NumberList[j] = "*";
+                    Common.AvailableName[j] = "*";
                 }
             }
+            
+            List<string> AN = new List<string>(Common.AvailableName);
+            AN.RemoveAll(item => item == "*");
+            Common.AvailableName = AN.ToArray();
             #endregion
         }
-
 
         /// <summary>
         /// 判断转动是否停止

@@ -6,6 +6,6 @@
              mc:Ignorable="d" 
                 d:DesignHeight="128" d:DesignWidth="128" Width="120" Height="120">
     <Border BorderThickness="1" x:Name="borderMain">
-        <TextBlock Name="textBlockNumberText" Text="0" FontSize="96" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <TextBlock Name="textBlockNumberText" Text="0" FontSize="32" HorizontalAlignment="Center" VerticalAlignment="Center" />
     </Border>
 </UserControl>
